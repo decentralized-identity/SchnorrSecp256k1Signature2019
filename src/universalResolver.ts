@@ -1,6 +1,5 @@
 import fetch from 'node-fetch';
 
-
 const getJson = async (url: string) =>
   fetch(url, {
     headers: {
@@ -8,7 +7,6 @@ const getJson = async (url: string) =>
     },
     method: 'get',
   }).then((data: any) => data.json());
-
 
 export default {
   resolve: async (didUri: string) => {

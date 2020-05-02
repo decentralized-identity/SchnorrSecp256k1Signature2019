@@ -6,7 +6,8 @@ import { privateKeyJwk, publicKeyJwk } from './fixtures';
 const data = new Uint8Array([128]);
 let key: SchnorrSecp256k1VerificationKey2019;
 
-const expectedDetachedJWS = 'eyJhbGciOiJTY2hub3JyRVMyNTZLIiwiYjY0IjpmYWxzZSwiY3JpdCI6WyJiNjQiXX0..cup5dVHz4tHM2b3qN82VBgEzh-It00rFLOyDVpzGiR8IQ8Kdihjv-ClrPRr-ltd_CZreVY6nDqIPNFerBaVABQ';
+const expectedDetachedJWS =
+  'eyJhbGciOiJTY2hub3JyRVMyNTZLIiwiYjY0IjpmYWxzZSwiY3JpdCI6WyJiNjQiXX0..cup5dVHz4tHM2b3qN82VBgEzh-It00rFLOyDVpzGiR8IQ8Kdihjv-ClrPRr-ltd_CZreVY6nDqIPNFerBaVABQ';
 
 describe('SchnorrSecp256k1VerificationKey2019', () => {
   it('can import a jwk', async () => {
@@ -39,7 +40,7 @@ describe('SchnorrSecp256k1VerificationKey2019', () => {
   it('verify', async () => {
     const { verify } = key.verifier();
     expect(typeof verify).toBe('function');
-    
+
     const result = await verify({
       data,
       signature: expectedDetachedJWS,
@@ -125,7 +126,7 @@ describe('SchnorrSecp256k1VerificationKey2019', () => {
     try {
       const signature =
         'eyJhbGciOiJFUzNksiLCJiNjQiOmZhbHNlfQ..cup5dVHz4tHM2b3qN82VBgEzh-It00rFLOyDVpzGiR8IQ8Kdihjv-ClrPRr-ltd_CZreVY6nDqIPNFerBaVABQ';
-       await verify({
+      await verify({
         data,
         signature,
       });

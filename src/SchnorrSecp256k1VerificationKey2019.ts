@@ -1,7 +1,6 @@
-
 import base64url from 'base64url';
 
-import  SchnorrES256K from './SchnorrES256K';
+import SchnorrES256K from './SchnorrES256K';
 
 import keyUtils from './keyUtils';
 
@@ -42,7 +41,9 @@ interface ISigner {
  * @returns {{sign: Function}} An object with an async function sign
  * using the private key passed in.
  */
-function joseSignerFactory(key: ISchnorrSecp256k1VerificationKey2019Options): ISigner {
+function joseSignerFactory(
+  key: ISchnorrSecp256k1VerificationKey2019Options
+): ISigner {
   if (!key.privateKeyJwk) {
     return {
       async sign() {
@@ -111,7 +112,7 @@ function joseVerifierFactory(
         ) &&
         Object.keys(header).length === 3
       ) {
-        console.error(header)
+        console.error(header);
         throw new Error(`Invalid JWS header parameters for ${type}.`);
       }
 
@@ -120,7 +121,11 @@ function joseVerifierFactory(
       const payload = Buffer.from(data.buffer, data.byteOffset, data.length);
 
       try {
-        await SchnorrES256K.verifyDetached(signature, payload, key.publicKeyJwk);
+        await SchnorrES256K.verifyDetached(
+          signature,
+          payload,
+          key.publicKeyJwk
+        );
         verified = true;
       } catch (e) {
         // tslint:disable-next-line:no-console
@@ -131,11 +136,14 @@ function joseVerifierFactory(
   };
 }
 
-class SchnorrSecp256k1VerificationKey2019 implements ISchnorrSecp256k1VerificationKey2019Options {
+class SchnorrSecp256k1VerificationKey2019
+  implements ISchnorrSecp256k1VerificationKey2019Options {
   /**
    * Used to support importing of public keys from resolvers.
    */
-  public static async from(options: ISchnorrSecp256k1VerificationKey2019Options) {
+  public static async from(
+    options: ISchnorrSecp256k1VerificationKey2019Options
+  ) {
     return new SchnorrSecp256k1VerificationKey2019(options);
   }
 

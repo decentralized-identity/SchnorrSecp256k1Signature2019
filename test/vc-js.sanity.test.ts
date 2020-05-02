@@ -1,13 +1,13 @@
+import jsigs from 'jsonld-signatures';
 import {
   SchnorrSecp256k1VerificationKey2019,
   SchnorrSecp256k1Signature2019,
   documentLoader,
 } from '../src/index';
-import jsigs from 'jsonld-signatures';
-
-const { AssertionProofPurpose } = jsigs.purposes;
 
 import { privateKeyJwk } from '../src/fixtures';
+
+const { AssertionProofPurpose } = jsigs.purposes;
 
 const vcjs = require('vc-js');
 
