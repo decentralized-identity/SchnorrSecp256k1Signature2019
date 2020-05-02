@@ -1,10 +1,75 @@
-# SchnorrSecp256k1Signature2019
+#### [View on GitHub](https://github.com/decentralized-identity/SchnorrSecp256k1Signature2019)
 
 Relies on [bitcoin-ts](https://github.com/bitauth/bitcoin-ts) for secp256k1 crypto.
 
-This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
+#### Relies on undrafed / unoffical JWS alg:
+
++----------+-------------------+----------------------+-------------+
+| JOSE Alg | COSE Alg Value | Description | Recommended |
+
+| Name | | | |
++----------+-------------------+----------------------+-------------+
+| SS256K | TBD (requested | Schnorr signature | Yes |
+| | assignment -48) | using secp256k1 | |
+| | | curve and SHA-256 | |
++----------+-------------------+----------------------+-------------+
+
+> JSON-LD 1.1 is being formally specified in the W3C JSON-LD Working Group. To participate in this work, please join the W3C and then [join the Working Group](https://www.w3.org/2018/json-ld-wg/).
+
+- [Latest JSON-LD Context](https://identity.foundation/SchnorrSecp256k1Signature2019/contexts/schnorr-v1.json)
+
+### Suite Details
+
+Per [ld-signatures](https://w3c-ccg.github.io/ld-signatures/#signature-suites), this Signature Suite defines the following:
+
+```json
+{
+  "id": "https://identity.foundation/SchnorrSecp256k1Signature2019#SchnorrSecp256k1Signature2019",
+  "type": "SignatureSuite",
+  "canonicalizationAlgorithm": "https://w3id.org/security#URDNA2015",
+  "digestAlgorithm": "https://www.ietf.org/assignments/jwa-parameters#SHA256",
+  "signatureAlgorithm": "https://tools.ietf.org/html/rfc7515"
+}
+```
+
+### Terminology
+
+<h4 id="SS256K"><a href="#SS256K">SS256K</a></h4>
+
+This suite uses detached JWS using alg "SS256K" an unregistered, experimental Schnorr over secp256k1. Please review the details below.
+
+- [Detached JWS RFC 7515](https://tools.ietf.org/html/rfc7515#appendix-F)
+- [ES256-K](https://tools.ietf.org/html/draft-ietf-cose-webauthn-algorithms-04#section-3.2)
+
+SS256K is just ES256K but uses Schnorr instead of ECDSA.
+
+The detached JWS must have the following header:
+
+```json
+{
+  "alg": "SS256K",
+  "b64": false,
+  "crit": ["b64"]
+}
+```
+
+<h4 id="SchnorrSecp256k1Signature2019"><a href="#SchnorrSecp256k1Signature2019">SchnorrSecp256k1Signature2019</a></h4>
+
+This is what a proof with `SchnorrSecp256k1Signature2019` looks like:
+
+```json
+{
+  "type": "SchnorrSecp256k1Signature2019",
+  "created": "2020-04-11T21:07:06Z",
+  "verificationMethod": "did:example:123#vm-3",
+  "proofPurpose": "assertionMethod",
+  "jws": "eyJhbGciOiJFUzI1NkstUiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..pp9eiLCMfN4EfSB3cbl3UxJ4TtgUaTfByDaaB6IZbXsnvIy5AUIFjbgaiFNtq9-3f8mP7foD_HXpjrdWZfzlwAE"
+}
+```
 
 ## Local Development
+
+This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
 
 Below is a list of commands you will probably find useful.
 
