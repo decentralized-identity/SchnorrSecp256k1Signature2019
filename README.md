@@ -1,5 +1,7 @@
 #### [View on GitHub](https://github.com/decentralized-identity/SchnorrSecp256k1Signature2019)
 
+![CI](https://github.com/decentralized-identity/SchnorrSecp256k1Signature2019/workflows/CI/badge.svg)
+
 Relies on [bitcoin-ts](https://github.com/bitauth/bitcoin-ts) for secp256k1 crypto.
 
 #### Relies on undrafted / unoffical JWS alg:
