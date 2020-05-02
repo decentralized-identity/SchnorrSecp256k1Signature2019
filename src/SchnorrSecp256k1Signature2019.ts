@@ -59,7 +59,7 @@ class SchnorrSecp256k1Signature2019 extends LinkedDataSignature {
       if (typeof key.verifier === 'function') {
         this.verifier = key.verifier(
           key,
-          'SchnorrES256K',
+          'SS256K',
           'SchnorrSecp256k1VerificationKey2019'
         );
       }
@@ -107,7 +107,7 @@ class SchnorrSecp256k1Signature2019 extends LinkedDataSignature {
       const key = await this.LDKeyClass.from(verificationMethod);
       verifier = key.verifier(
         key,
-        'SchnorrES256K',
+        'SS256K',
         'SchnorrSecp256k1VerificationKey2019'
       );
     }

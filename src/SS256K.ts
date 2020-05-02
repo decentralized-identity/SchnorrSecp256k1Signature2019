@@ -21,7 +21,7 @@ class JWSVerificationFailed extends Error {
 
 /** JWS Header */
 export interface IJWSHeader {
-  /** algorithm, SchnorrES256K */
+  /** algorithm, SS256K */
   alg: string;
 
   /** type, JWT */
@@ -36,7 +36,7 @@ export const signDetached = async (
   payload: Buffer,
   privateKeyJWK: ISecp256k1PrivateKeyJWK,
   header = {
-    alg: 'SchnorrES256K',
+    alg: 'SS256K',
     b64: false,
     crit: ['b64'],
   }
@@ -82,8 +82,8 @@ export const verifyDetached = async (
   }
   const [encodedHeader, encodedSignature] = jws.split('..');
   const header = JSON.parse(base64url.decode(encodedHeader));
-  if (header.alg !== 'SchnorrES256K') {
-    throw new Error('JWS alg is not signed with SchnorrES256K.');
+  if (header.alg !== 'SS256K') {
+    throw new Error('JWS alg is not signed with SS256K.');
   }
   if (
     header.b64 !== false ||
@@ -120,11 +120,11 @@ export const verifyDetached = async (
   throw new Error('Cannot verify detached signature.');
 };
 
-/** Produce a normal SchnorrES256K JWS */
+/** Produce a normal SS256K JWS */
 export const sign = async (
   payload: any,
   privateKeyJWK: ISecp256k1PrivateKeyJWK,
-  header: IJWSHeader = { alg: 'SchnorrES256K' }
+  header: IJWSHeader = { alg: 'SS256K' }
 ) => {
   const privateKeyUInt8Array = await privateKeyUInt8ArrayFromJWK(privateKeyJWK);
   const secp256k1 = await instantiateSecp256k1();
@@ -149,7 +149,7 @@ export const sign = async (
   return `${encodedHeader}.${encodedPayload}.${encodedSignature}`;
 };
 
-/** Verify an SchnorrES256K JWS, returns the decoded object if successful, throws otherwise. */
+/** Verify an SS256K JWS, returns the decoded object if successful, throws otherwise. */
 export const verify = async (
   jws: string,
   publicKeyJWK: ISecp256k1PublicJWK

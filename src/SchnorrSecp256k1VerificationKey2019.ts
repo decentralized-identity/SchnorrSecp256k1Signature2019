@@ -1,6 +1,6 @@
 import base64url from 'base64url';
 
-import SchnorrES256K from './SchnorrES256K';
+import SS256K from './SS256K';
 
 import keyUtils from './keyUtils';
 
@@ -55,12 +55,12 @@ function joseSignerFactory(
   return {
     async sign({ data }: any): Promise<string> {
       const header = {
-        alg: 'SchnorrES256K',
+        alg: 'SS256K',
         b64: false,
         crit: ['b64'],
       };
       const toBeSigned = Buffer.from(data.buffer, data.byteOffset, data.length);
-      return SchnorrES256K.signDetached(toBeSigned, key.privateKeyJwk, header);
+      return SS256K.signDetached(toBeSigned, key.privateKeyJwk, header);
     },
   };
 }
@@ -88,7 +88,7 @@ function joseVerifierFactory(
 
   return {
     async verify({ data, signature }: any) {
-      const alg = 'SchnorrES256K';
+      const alg = 'SS256K';
       const type = 'SchnorrSecp256k1VerificationKey2019';
       const [encodedHeader] = signature.split('..');
       let header;
@@ -121,11 +121,7 @@ function joseVerifierFactory(
       const payload = Buffer.from(data.buffer, data.byteOffset, data.length);
 
       try {
-        await SchnorrES256K.verifyDetached(
-          signature,
-          payload,
-          key.publicKeyJwk
-        );
+        await SS256K.verifyDetached(signature, payload, key.publicKeyJwk);
         verified = true;
       } catch (e) {
         // tslint:disable-next-line:no-console
