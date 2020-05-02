@@ -7,7 +7,7 @@ const data = new Uint8Array([128]);
 let key: SchnorrSecp256k1VerificationKey2019;
 
 const expectedDetachedJWS =
-  'eyJhbGciOiJTY2hub3JyRVMyNTZLIiwiYjY0IjpmYWxzZSwiY3JpdCI6WyJiNjQiXX0..cup5dVHz4tHM2b3qN82VBgEzh-It00rFLOyDVpzGiR8IQ8Kdihjv-ClrPRr-ltd_CZreVY6nDqIPNFerBaVABQ';
+  'eyJhbGciOiJTUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..3QNcdPP__YgWvfuCM6tQ-AwxCCAVuMg3AeRV9XylaLni535-AKI1n-9LIZydnox9M1fHRXXrZcSJ8UApXCn5JQ';
 
 describe('SchnorrSecp256k1VerificationKey2019', () => {
   it('can import a jwk', async () => {
@@ -28,12 +28,13 @@ describe('SchnorrSecp256k1VerificationKey2019', () => {
     const { sign } = key.signer();
     expect(typeof sign).toBe('function');
     const signature = await sign({ data });
+    // console.log(signature);
     const [encodedHeader, encodedSignature] = signature.split('..');
     const header = JSON.parse(base64url.decode(encodedHeader));
     expect(header.b64).toBe(false);
     expect(header.crit).toEqual(['b64']);
     expect(encodedSignature).toBe(
-      'cup5dVHz4tHM2b3qN82VBgEzh-It00rFLOyDVpzGiR8IQ8Kdihjv-ClrPRr-ltd_CZreVY6nDqIPNFerBaVABQ'
+      '3QNcdPP__YgWvfuCM6tQ-AwxCCAVuMg3AeRV9XylaLni535-AKI1n-9LIZydnox9M1fHRXXrZcSJ8UApXCn5JQ'
     );
   });
 
@@ -106,7 +107,7 @@ describe('SchnorrSecp256k1VerificationKey2019', () => {
     expect(typeof verify).toBe('function');
 
     const signature =
-      'eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlfQ..cup5dVHz4tHM2b3qN82VBgEzh-It00rFLOyDVpzGiR8IQ8Kdihjv-ClrPRr-ltd_CZreVY6nDqIPNFerBaVABQ';
+      'eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlfQ..3QNcdPP__YgWvfuCM6tQ-AwxCCAVuMg3AeRV9XylaLni535-AKI1n-9LIZydnox9M1fHRXXrZcSJ8UApXCn5JQ';
     const result = await verify({
       data,
       signature,
@@ -125,7 +126,7 @@ describe('SchnorrSecp256k1VerificationKey2019', () => {
 
     try {
       const signature =
-        'eyJhbGciOiJFUzNksiLCJiNjQiOmZhbHNlfQ..cup5dVHz4tHM2b3qN82VBgEzh-It00rFLOyDVpzGiR8IQ8Kdihjv-ClrPRr-ltd_CZreVY6nDqIPNFerBaVABQ';
+        'eyJhbGciOiJFUzNksiLCJiNjQiOmZhbHNlfQ..3QNcdPP__YgWvfuCM6tQ-AwxCCAVuMg3AeRV9XylaLni535-AKI1n-9LIZydnox9M1fHRXXrZcSJ8UApXCn5JQ';
       await verify({
         data,
         signature,

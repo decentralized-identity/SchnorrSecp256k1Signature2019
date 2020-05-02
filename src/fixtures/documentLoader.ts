@@ -1,7 +1,10 @@
 const contexts: any = {
+  'https://www.w3.org/ns/did/v1': require('./contexts/did-v1.json'),
   'https://w3id.org/did/v1': require('./contexts/did-v0.11.json'),
   'https://w3id.org/security/v1': require('./contexts/security-v1.json'),
   'https://w3id.org/security/v2': require('./contexts/security-v2.json'),
+
+  'https://identity.foundation/SchnorrSecp256k1Signature2019/contexts/schnorr-v1.json': require('./contexts/schnorr-v1.json'),
 };
 
 const didDoc = require('./didDoc');
