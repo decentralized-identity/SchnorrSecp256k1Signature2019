@@ -2,17 +2,13 @@
 
 Relies on [bitcoin-ts](https://github.com/bitauth/bitcoin-ts) for secp256k1 crypto.
 
-#### Relies on undrafed / unoffical JWS alg:
+#### Relies on undrafted / unoffical JWS alg:
 
-+----------+-------------------+----------------------+-------------+
-| JOSE Alg | COSE Alg Value | Description | Recommended |
-
-| Name | | | |
-+----------+-------------------+----------------------+-------------+
-| SS256K | TBD (requested | Schnorr signature | Yes |
-| | assignment -48) | using secp256k1 | |
-| | | curve and SHA-256 | |
-+----------+-------------------+----------------------+-------------+
+| JOSE Alg | COSE Alg Value                 | Description                                         | Recommended |
+| -------- | ------------------------------ | --------------------------------------------------- | ----------- |
+| SS256K   | TBD (requested assignment -48) | Schnorr signature using secp256k1 curve and SHA-256 | Yes         |
+|          |                                |                                                     |             |
+|          |                                |                                                     |             |
 
 > JSON-LD 1.1 is being formally specified in the W3C JSON-LD Working Group. To participate in this work, please join the W3C and then [join the Working Group](https://www.w3.org/2018/json-ld-wg/).
 
