@@ -16,6 +16,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
+    "postbuild": "cp ./src/fixtures/*.json ./dist/fixtures && cp -R ./src/fixtures/contexts ./dist/fixtures/contexts",
     "test": "tsdx test",
     "lint": "tsdx lint src test --fix",
     "prepare": "tsdx build"
