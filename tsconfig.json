@@ -2,7 +2,6 @@
   "include": ["src", "types"],
   "compilerOptions": {
     "module": "esnext",
-    "target": "ES2017",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
     "resolveJsonModule": true,
