@@ -1,12 +1,8 @@
 import jsonld from 'jsonld';
-import jsigs from 'jsonld-signatures';
+
 import SchnorrSecp256k1VerificationKey2019 from './SchnorrSecp256k1VerificationKey2019';
 
-const {
-  suites: { LinkedDataSignature },
-} = jsigs;
-
-export { LinkedDataSignature };
+import LinkedDataSignature from './LinkedDataSignature';
 
 const requiredKeyType = 'SchnorrSecp256k1VerificationKey2019';
 const proofSignatureKey = 'jws';

@@ -4,6 +4,8 @@
 
 Relies on [bitcoin-ts](https://github.com/bitauth/bitcoin-ts) for secp256k1 crypto.
 
+Relies on [jsonld-signatures](https://github.com/digitalbazaar/jsonld-signatures) for jsonld operations. Some of the javascript from that repo needed to be converted to typescript to get this module to build properly, I have retained the copyrights on source files.
+
 #### Relies on undrafted / unoffical JWS alg:
 
 | JOSE Alg | COSE Alg Value                 | Description                                         | Recommended |

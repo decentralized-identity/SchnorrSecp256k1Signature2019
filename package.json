@@ -49,6 +49,8 @@
     "json-stringify-deterministic": "^1.0.1",
     "jsonld": "^3.1.0",
     "jsonld-signatures": "^5.0.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "node-forge": "^0.9.1",
+    "security-context": "^4.0.0"
   }
 }
