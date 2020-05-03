@@ -2,7 +2,6 @@
  * Copyright (c) 2018 Digital Bazaar, Inc. All rights reserved.
  */
 // See https://github.com/digitalbazaar/jsonld-signatures
-'use strict';
 
 // determine if using node.js or browser
 const nodejs =
